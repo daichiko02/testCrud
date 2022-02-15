@@ -15,7 +15,7 @@ public class ConverterHelper {
         }
     }
     
-    public static <T, V> T convertDtoToEntity(V dtoObject, Class<T> targetClass){
-        return modelMapper.map(dtoObject, targetClass);
+    public static <T, V> T convertObject(V sourceObject, Class<T> targetClass){
+        return modelMapper.map(sourceObject, targetClass);
     }
 }
