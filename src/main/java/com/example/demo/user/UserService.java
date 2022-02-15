@@ -1,5 +1,7 @@
 package com.example.demo.user;
 
+import com.example.demo.user.response.UserResponseDto;
+import com.example.demo.util.ConverterHelper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +19,7 @@ public class UserService {
         return userRepository.findAll();
     }
     
-    public User addUser(User user) {
-        return userRepository.save(user);
+    public UserResponseDto addUser(User user) {
+        return ConverterHelper.convertObject(userRepository.save(user), UserResponseDto.class);
     }
 }

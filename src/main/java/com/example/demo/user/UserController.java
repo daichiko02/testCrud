@@ -1,5 +1,7 @@
 package com.example.demo.user;
 
+import com.example.demo.user.request.UserRequestDto;
+import com.example.demo.user.response.UserResponseDto;
 import com.example.demo.util.ConverterHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,9 @@ public class UserController {
     }
     
     @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody @Valid UserRequestDto userDto){
-        User user = ConverterHelper.convertDtoToEntity(userDto, User.class);
-        user = userService.addUser(user);
-        return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+    public ResponseEntity<UserResponseDto> addUser(@RequestBody @Valid UserRequestDto userDto){
+        User user = ConverterHelper.convertObject(userDto, User.class);
+        return new ResponseEntity<>(userService.addUser(user), HttpStatus.ACCEPTED);
     }
     
     @GetMapping("/users")
