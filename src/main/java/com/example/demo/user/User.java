@@ -5,14 +5,18 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity( name = "user")
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = -4439114469417994311L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
